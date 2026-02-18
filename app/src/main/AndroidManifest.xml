@@ -46,6 +46,10 @@
 
         <activity
             android:name=".FragmentActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".StudentApiActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
