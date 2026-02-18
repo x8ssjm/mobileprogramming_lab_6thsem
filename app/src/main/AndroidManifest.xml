@@ -22,6 +22,10 @@
 
         <activity
             android:name=".CustomListViewActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".RecyclerViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
