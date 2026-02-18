@@ -54,6 +54,10 @@
 
         <activity
             android:name=".DialogActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SqliteActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
