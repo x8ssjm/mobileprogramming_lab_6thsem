@@ -1,79 +1,72 @@
 package com.app.labbca6thsem;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DialogActivity extends AppCompatActivity {
 
-    Button btnSimple, btnCustom;
+    Button btnOpenDialog;
+    TextView tvDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
 
-        btnSimple = findViewById(R.id.btn_simple_dialog);
-        btnCustom = findViewById(R.id.btn_custom_dialog);
+        btnOpenDialog = findViewById(R.id.btn_open_input_dialog);
+        tvDisplay = findViewById(R.id.tv_display_details);
 
-        btnSimple.setOnClickListener(new View.OnClickListener() {
+        btnOpenDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSimpleDialog();
-            }
-        });
-
-        btnCustom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCustomDialog();
+                showInputDialog();
             }
         });
     }
 
-    private void showSimpleDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Simple Alert")
-                .setMessage("Do you want to exit Lab 9?")
-                .setCancelable(true)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(DialogActivity.this, "Clicked Yes", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+    private void showInputDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.layout_custom_dialog);
+        dialog.setCancelable(true);
 
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
+        final EditText etName = dialog.findViewById(R.id.et_dialog_name);
+        final EditText etRoll = dialog.findViewById(R.id.et_dialog_roll);
+        final EditText etResult = dialog.findViewById(R.id.et_dialog_result);
+        final EditText etGrade = dialog.findViewById(R.id.et_dialog_grade);
+        Button btnSave = dialog.findViewById(R.id.btn_save_dialog_data);
 
-    private void showCustomDialog() {
-        final Dialog customDialog = new Dialog(this);
-        customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        customDialog.setContentView(R.layout.layout_custom_dialog);
-        customDialog.setCancelable(false);
-
-        Button btnClose = customDialog.findViewById(R.id.btn_close_dialog);
-        btnClose.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                customDialog.dismiss();
-                Toast.makeText(DialogActivity.this, "Custom Dialog Closed", Toast.LENGTH_SHORT).show();
+                String name = etName.getText().toString();
+                String roll = etRoll.getText().toString();
+                String result = etResult.getText().toString();
+                String grade = etGrade.getText().toString();
+
+                if (name.isEmpty() || roll.isEmpty() || result.isEmpty() || grade.isEmpty()) {
+                    Toast.makeText(DialogActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    String info = "Student Detail:\n" +
+                            "Name: " + name + "\n" +
+                            "Roll: " + roll + "\n" +
+                            "Result: " + result + "\n" +
+                            "Grade: " + grade;
+
+                    tvDisplay.setText(info);
+                    dialog.dismiss();
+                    Toast.makeText(DialogActivity.this, "Details Displayed!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        customDialog.show();
+        dialog.show();
     }
 }

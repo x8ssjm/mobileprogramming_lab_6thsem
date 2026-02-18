@@ -7,43 +7,48 @@
     android:background="@android:color/white"
     android:gravity="center_horizontal">
 
-    <ImageView
-        android:id="@+id/dialog_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:layout_marginBottom="15dp" />
-
     <TextView
-        android:id="@+id/dialog_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student Name: Cristiano Ronaldo"
+        android:text="Enter Student Details"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/dialog_id"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_dialog_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ID: BCA-2022-007"
-        android:textSize="16sp"
-        android:layout_marginBottom="5dp" />
+        android:hint="Name"
+        android:layout_marginBottom="10dp" />
 
-    <TextView
-        android:id="@+id/dialog_faculty"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_dialog_roll"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Faculty: Humanities"
-        android:textSize="16sp"
+        android:hint="Roll Number"
+        android:inputType="number"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/et_dialog_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Result (Pass/Fail)"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/et_dialog_grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Grade"
         android:layout_marginBottom="20dp" />
 
     <Button
-        android:id="@+id/btn_close_dialog"
+        android:id="@+id/btn_save_dialog_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Close" />
+        android:text="Save Details" />
 
 </LinearLayout>

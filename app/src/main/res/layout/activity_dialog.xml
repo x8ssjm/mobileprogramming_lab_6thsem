@@ -10,23 +10,36 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dialog Box Demo"
+        android:text="Student Details Dialog"
         android:textSize="22sp"
         android:textStyle="bold"
         android:layout_marginBottom="30dp"
         android:textColor="@color/black" />
 
     <Button
-        android:id="@+id/btn_simple_dialog"
+        android:id="@+id/btn_open_input_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show Simple Alert Dialog"
-        android:layout_marginBottom="20dp" />
+        android:text="Enter Student Details"
+        android:layout_marginBottom="30dp" />
 
-    <Button
-        android:id="@+id/btn_custom_dialog"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details Displayed Below:"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:id="@+id/tv_display_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show Custom Student Dialog" />
+        android:text="Waiting for input..."
+        android:textSize="16sp"
+        android:padding="15dp"
+        android:background="#E8E8E8"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="4dp" />
 
 </LinearLayout>
