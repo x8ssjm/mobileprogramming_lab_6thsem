@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@android:color/white"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/dialog_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_marginBottom="15dp" />
+
+    <TextView
+        android:id="@+id/dialog_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student Name: Cristiano Ronaldo"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/dialog_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID: BCA-2022-007"
+        android:textSize="16sp"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/dialog_faculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faculty: Humanities"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:id="@+id/btn_close_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close" />
+
+</LinearLayout>
