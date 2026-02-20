@@ -46,8 +46,8 @@ public class StudentApiActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                // Using randomuser.me API as requested
-                URL url = new URL("https://randomuser.me/api/?results=10");
+                // Using jsonplaceholder API for better reliability
+                URL url = new URL("https://jsonplaceholder.typicode.com/users");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
 
@@ -75,29 +75,25 @@ public class StudentApiActivity extends AppCompatActivity {
             }
 
             try {
-                JSONObject root = new JSONObject(result);
-                JSONArray resultsArray = root.getJSONArray("results");
+                // jsonplaceholder returns a JSONArray directly
+                JSONArray resultsArray = new JSONArray(result);
                 StringBuilder formattedData = new StringBuilder();
 
                 for (int i = 0; i < resultsArray.length(); i++) {
                     JSONObject user = resultsArray.getJSONObject(i);
 
-                    // Decode Name object
-                    JSONObject nameObj = user.getJSONObject("name");
-                    String fullName = nameObj.getString("title") + ". " +
-                            nameObj.getString("first") + " " +
-                            nameObj.getString("last");
-
+                    int id = user.getInt("id");
+                    String fullName = user.getString("name");
                     String email = user.getString("email");
 
-                    // Decode Location object
-                    JSONObject locationObj = user.getJSONObject("location");
-                    String country = locationObj.getString("country");
+                    // Use company name as "Faculty" for display
+                    JSONObject companyObj = user.getJSONObject("company");
+                    String faculty = companyObj.getString("name");
 
-                    formattedData.append("Student Profile #").append(i + 1).append("\n");
+                    formattedData.append("ID: ").append(id).append("\n");
                     formattedData.append("Name: ").append(fullName).append("\n");
                     formattedData.append("Email: ").append(email).append("\n");
-                    formattedData.append("Country: ").append(country).append("\n");
+                    formattedData.append("Company: ").append(faculty).append("\n");
                     formattedData.append("----------------------------\n\n");
                 }
 
